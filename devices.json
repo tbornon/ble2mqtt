@@ -1,0 +1,8 @@
+{
+    "devices": [
+        {
+            "mac": "9C:9C:1F:DD:66:16",
+            "templateName": "ESP32_DHT22"
+        }
+    ]
+}
