@@ -9,18 +9,18 @@ export default class ESP32_DHT22 extends BaseDevice {
     constructor(mqttClient: MqttClient, peripheral: Peripheral) {
         super(mqttClient, peripheral);
 
+        // The characteristics you want to subscribe to
         this.characteristics = [
             CHARACTERISTICS_UUID.TEMPERATURE,
             CHARACTERISTICS_UUID.HUMIDITY
         ];
     }
 
-    onNewData(characteristic: Characteristic): Function {
-        return (data: Buffer) => {
-            if (characteristic.uuid == CHARACTERISTICS_UUID.TEMPERATURE)
-                this.publish('temperature', getTemperature(data));
-            else if (characteristic.uuid == CHARACTERISTICS_UUID.HUMIDITY)
-                this.publish('humidity', getHumidity(data));
-        }
+    // What to do when you receive new datas ?
+    onNewData(characteristic: Characteristic, data: Buffer, isNotification: boolean) {
+        if (characteristic.uuid == CHARACTERISTICS_UUID.TEMPERATURE)
+            this.publish('temperature', getTemperature(data));
+        else if (characteristic.uuid == CHARACTERISTICS_UUID.HUMIDITY)
+            this.publish('humidity', getHumidity(data));
     }
 }

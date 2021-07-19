@@ -21,14 +21,14 @@ export default class BaseDevice {
             .forEach(async (c) => {
                 await c.subscribeAsync();
 
-                c.on('data', this.onNewData(c));
+                c.on('data', (data: Buffer, isNotification: boolean) => {
+                    this.onNewData(c, data, isNotification);
+                });
             })
     }
 
-    onNewData(characteristic: Characteristic): Function {
-        return (data: Buffer) => {
-            throw new Error("Not implemented");
-        }
+    onNewData(characteristic: Characteristic, data: Buffer, isNotification: boolean) {
+        throw new Error("Not implemented");
     }
 
     publish(topic: string, data: string | number) {
