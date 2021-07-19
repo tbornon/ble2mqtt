@@ -32,9 +32,10 @@ npm start
 
 Rules :
 * The template must be placed inside devices folder.
+* The template filename must be the same as the classname.
 * It must extend the BaseDevice class.
 * It must implement onNewData function.
 
 In constructor, you list characteristics UUIDs (lowercase, without 0x at the beginning) you want to subscribe to.
 
-In onNewData, you process your datas as you want to and then you publish them to the desired MQTT topic
+In onNewData, you process your datas as you want to and then you publish them to the desired MQTT topic.
