@@ -1,7 +1,0 @@
-{
-    "mqtt": {
-        "host": "localhost",
-        "port": "1883",
-        "baseTopic": "/ble2mqtt"
-    }
-}
